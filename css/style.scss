@@ -1,0 +1,227 @@
+@import 'functions';
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap');
+
+// Colors
+
+$main-color: linear-gradient(to right, #277673 0, #55af81 100%);
+$text-color:#277673;
+$article-color: #cdf6ff;
+$share-color: #d8dee8;
+$hover-color: #6b7e93;
+$active-color: #516478;
+$message-color: #384b5e;
+$manrope: 'Manrope', sans-serif;
+
+
+// Styles
+
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background-image: $main-color;
+    font-family: $manrope;
+    font-size: 13px;
+}
+
+h1, h4{
+    color: $text-color;
+}
+
+.container{
+    position: relative;
+    margin: 0 auto;
+}
+
+.flex{
+    display: flex;
+    flex-direction: column;
+}
+
+.grid{
+    display: grid;
+    grid-template-columns: 285px 445px;
+}
+
+
+.wrapper{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+}
+
+.main{
+    position: relative;
+    border-radius: 10px;
+    box-shadow: 0 1rem 2.7rem 0.43rem rgb(51, 75, 74, 0.45);
+    place-items: center;
+    .drawer{
+        width: 285px;
+        height: 280px;
+        object-fit: cover;
+        object-position: 0 100%;
+        border-radius: 10px 0 0 10px;
+    }
+    
+    .text-article{
+        @include set-background($article-color);
+        height: 280px;
+        width: 445px;
+        padding: 40px;
+        gap: 20px;
+        border-radius: 0 10px 10px 0;
+        h1{
+            line-height: 1.2;
+        }
+        
+        .card{
+            flex-direction: row;
+            justify-content: space-between;
+            position: relative;
+            .avatar{
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+            .details{
+                margin-right: 150px;
+                justify-content: space-around;
+                p{
+                    justify-self: flex-end;
+                }
+            }
+            .card-share{
+                position: relative;
+                width: 35px;
+                height: 35px;
+                border-radius: 50%;
+                align-self: center;
+                background-color: $share-color;
+                align-items: center;
+                justify-content: center;
+                display: grid;
+                place-content: center;
+                cursor: pointer;
+                z-index: 200;
+                transition: all 0.3s ease-in-out;
+
+                .arrow{
+                    width: 18px;
+                    height: 18px;
+                    z-index: 4;
+                }
+                &:hover{
+                    background-color: $hover-color;
+                    > .arrow{
+                        filter: brightness(0) saturate(100%) invert(100%) sepia(17%) saturate(433%) hue-rotate(23deg) brightness(102%) contrast(102%);
+                        transition: all 0.4s ease-in-out;
+                    }
+                }
+            }
+            .message-box{
+                @include set-background($message-color);
+                position: absolute;
+                top: -75px;
+                width: 250px;
+                height: 55px;
+                left: 100%;
+                transform: translateX(-57%);
+                display: flex;
+                opacity: 0;
+                transition: opacity 1s;
+                align-items: center;
+                justify-content: center;
+                border-radius: 10px;
+                &::before{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    @include set-background($message-color);
+                    width: 20px;
+                    height: 20px;
+                    bottom: -10px;
+                    left: 50%;
+                    -webkit-transform: translateX(-50%) rotate(45deg);
+                    transform: translateX(-50%) rotate(45deg);
+            }
+                p{
+                    letter-spacing: 4px;
+                }
+                ul{
+                    display: flex;
+                    list-style: none;
+                    a{
+                        padding-left: 15px;
+                        &:nth-child(2){
+                            margin-top: 2px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 932px){
+    $main-color: linear-gradient(to bottom,  #277673 0, #55af81 100%);
+
+    body{
+        background-image: $main-color;
+    }
+
+    .grid{
+        grid-template-columns: 1fr;
+    }
+
+    .main{
+        .drawer, .text-article{
+            width: 320px;
+        }
+        
+        .drawer{
+            height: 200px;
+            object-position: 50% 20%;
+            border-radius: 10px 10px 0 0;
+        }
+        .text-article{
+            @include set-background($article-color);
+            height: 100%;
+            padding: 40px 30px 20px 30px;
+            gap: 25px;
+            border-radius: 0 0 10px 10px;
+            h1{
+                font-size: 1rem;
+            }
+            .card{
+                .details{
+                    margin-right: 30px;
+                }
+                .message-box{
+                    top: -10px;
+                    width: 320px;
+                    height: 60px;
+                    left: -30px;
+                    transform: none;
+                    align-items: center;
+                    border-radius: 0 0 10px 10px;
+                    justify-content: flex-start;
+                    padding-left: 30px;
+                    &::before{
+                        display: none;
+                    }
+                }
+
+                .share{
+                    z-index: 2;
+                }
+            }
+        }
+    }
+}

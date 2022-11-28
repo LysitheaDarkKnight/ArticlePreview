@@ -1,0 +1,24 @@
+// Set Text color based on bg
+
+@function set-text-color($color) {
+    @if(lightness($color) > 70){
+        @return #333;
+    } 
+    @else {
+        @return #fff;
+    }
+}
+
+//Set BG Color and Text
+
+@mixin set-background($color) {
+    background-color: $color;
+    color: set-text-color($color)
+}
+
+@mixin display($display, $align-items, $justify-content, $flex-direction) {
+    display: $display;
+    align-items: $align-items;
+    justify-content: $justify-content;
+    flex-direction: $flex-direction;
+}

@@ -25,8 +25,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: (https://your-solution-url.com)
-- Live Site URL: (https://lysitheadarkknight.github.io/FourCardFeatureSectionMaster/)
+- Solution URL: (https://www.frontendmentor.io/challenges/article-preview-component-dYBN_pYFT/hub/article-preview-component-sass-js-_wouFH4t8R)
+- Live Site URL: (https://lysitheadarkknight.github.io/ArticlePreview/)
 
 ## My process
 
